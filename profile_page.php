@@ -1,20 +1,16 @@
 <?php
-// Connect to the database
-$conn = mysqli_connect('localhost', 'root', '', 'mbax4dc9');
-
-// If connection failed, display the connection error
-if(!$conn)
-{
-  die("Connection failed: " . mysqli_connect_error());
-}
-session_start();
-
-// Take the variables from the session
-$ID = $_SESSION['ID'];
-
-$name = $_SESSION['username'];
-
-?> 
+ // Connect to the database
+ $conn = mysqli_connect('localhost', 'root', '', 'mbax4dc9');
+ // If connection failed, display the connection error
+ if(!$conn)
+ {
+   die("Connection failed: " . mysqli_connect_error());
+ }
+ session_start();
+ // Take the variables from the session
+ $ID = $_SESSION['ID'];
+ $name = $_SESSION['username'];
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +29,7 @@ $name = $_SESSION['username'];
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
    <link rel="stylesheet" href="assets/bootstrap/css/user_page.css"></script>
 
-   
+
     <script type="text/javascript" src="http://www.clubdesign.at/floatlabels.js"></script>
 
   </head>
@@ -59,10 +55,10 @@ $name = $_SESSION['username'];
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-file-text-o"></i> Share your events 
+                    <i class="fa fa-file-text-o"></i> Share your events
                 </a>
             </li>
-           
+
         </ul><!-- /.nav -->
 
         <h5 class="nav-email-subtitle">Your projects</h5>
@@ -72,11 +68,11 @@ $name = $_SESSION['username'];
                     <i class="fa fa-folder-open"></i> Profile options
                 </a>
             </li>
-            
+
         </ul><!-- /.nav -->
     </div>
     <div class="col-sm-9">
-        
+
         <!-- resumt -->
         <div class="panel panel-default">
                <div class="panel-heading resume-heading">
@@ -86,7 +82,7 @@ $name = $_SESSION['username'];
                            <figure>
                               <img class="img-circle img-responsive" style="width:50%, height:50%" alt="" src="assets/images/profile.jpg">
                            </figure>
-                          
+
                         </div>
                         <div class="col-xs-12 col-sm-8">
                            <ul class="list-group">
@@ -102,11 +98,11 @@ $name = $_SESSION['username'];
                <div class="bs-callout bs-callout-danger">
                   <h4>Summary</h4>
                   <p>
-                     Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                     Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
                      te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                   </p>
                   <p>
-                     Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis. 
+                     Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis.
                      Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
                   </p>
                </div>
@@ -126,26 +122,26 @@ $name = $_SESSION['username'];
                            Software Engineer at Twitter
                         </h4>
                         <p class="list-group-item-text">
-                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
                            te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                         </p>
                      </a>
                      <a class="list-group-item inactive-link" href="#">
                         <h4 class="list-group-item-heading">Software Engineer at LinkedIn</h4>
                         <p class="list-group-item-text">
-                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                           Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
+                           Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
                            nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                         </p>
                         <ul>
                            <li>
-                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
+                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
                               nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                            </li>
                            <li>
-                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
+                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
                               nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                            </li>
                         </ul>
@@ -153,9 +149,9 @@ $name = $_SESSION['username'];
                      </a>
                   </ul>
                </div>
-               
-              
-              
+
+
+
             </div>
          </div>
         <!-- resume -->
