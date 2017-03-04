@@ -47,12 +47,12 @@ $name = $_SESSION['username'];
         <a href="mail-compose.html" class="btn btn-danger btn-block btn-compose-email">Create event</a>
         <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
             <li class="active" >
-                <a href="#mail-inbox.html">
+                <a href="#mail-inbox.html" id ="new">
                     <i class="fa fa-inbox"></i>New events in Stockport
                 </a>
             </li>
             <li>
-                <a href="#mail-compose.html"><i class="fa fa-envelope-o"></i>Events you attended</a>
+                <a href="#" id="attend"><i class="fa fa-envelope-o"></i>Events you attended</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-certificate"></i>Events you saved</a>
@@ -63,7 +63,7 @@ $name = $_SESSION['username'];
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#" id = "create">
                     <i class="fa fa-certificate"></i>Events you created 
                 </a>
             </li>
@@ -105,6 +105,7 @@ $name = $_SESSION['username'];
                   </div>
                </div>
                <?php
+
                $sql = "SELECT id, title, location, event_date, time_start, time_end, description FROM events";  
                $result = mysqli_query($conn, $sql);
          
@@ -119,25 +120,73 @@ $name = $_SESSION['username'];
                 } 
                 else 
                 {
+
                   while($row = mysqli_fetch_assoc($result))
                   {
 
                   ?>
+              <div class ="active" id= "new_events">
                 <div class="bs-callout bs-callout-danger">
-                  <h4><?php echo $row['title'] ?></h4>
-                  <h5><?php echo $row['location'] ?> </h5>
-                  <h5><?php echo $row['event_date'].'&nbsp'.$row['time_start'].' - '.$row['time_end']; ?> </h5>
+                  <h4 ><?php echo $row['title'] ?></h4>
+                  <h5>Location : <?php echo $row['location'] ?> </h5>
+                  <h5>Date : <?php echo $row['event_date'].'&nbsp'.$row['time_start'].' - '.$row['time_end']; ?> </h5>
                   <p>
                      <?php echo $row['description'];?>
                   </p>
-                  <button type="button" onClick="includes/attend_event.php" class="btn btn-warning">Attend this event</button>
+                  <a name = "attend" class = "btn btn-warning" href="attend_event.php?attend="<?php echo $row['id']; ?> > Attend this event</a>
                </div>
                <?php
                  }
                }
                mysqli_close($conn);
                ?>
-               
+              </div>
+
+               <div id = "attended">
+                <div class="bs-callout bs-callout-danger">
+                  <h4 >Run miles to save the orphans</h4>
+                  <h5>Location : Stockport </h5>
+                  <h5>Date : 3rd March 12 - 22 </h5>
+                  <p>
+                     Help us save the orphans and challange yourself by running 20 miles in the Atlantic Ocean. This is a charitable event and all
+                     participants will be monitored and safe
+                  </p>
+                <button class="btn btn-succesful">You attended this event </button>
+               </div>
+
+               <div class="bs-callout bs-callout-danger">
+                  <h4 >Help the children of Moss Side</h4>
+                  <h5>Location : Council Building</h5>
+                  <h5>Date : 26th February 10 - 15 </h5>
+                  <p>
+                     We are all aware of the financial crisis children in Moss Side suffer of so we invite you to bake cakes and come and participate in 
+                     our food fair 
+                  </p>
+                  <button class="btn btn-succesful">You attended this event </button>
+               </div>
+            </div>
+
+            <div id = "created">
+                <div class="bs-callout bs-callout-danger">
+                  <h4 >Help us clean the parks</h4>
+                  <h5>Location : Stockport </h5>
+                  <h5>Date : 3rd March 12 - 22 </h5>
+                  <p>
+                     Help us clean the parks and be an active part of this community in Moss Side suffer of so we invite you to bake cakes and come and participate in our food fair 
+                  </p>
+                <button class="btn btn-succesful">You attended this event </button>
+               </div>
+
+               <div class="bs-callout bs-callout-danger">
+                  <h4 >Raise money for prostate cancer research</h4>
+                  <h5>Location : Council Building</h5>
+                  <h5>Date : 22th February 10 - 15 </h5>
+                  <p>
+                    We are initiating a campaign which wants to raise £10.000 which will all go into cancer research in uk.
+                  </p>
+                  <button class="btn btn-succesful">You attended this event </button>
+               </div>
+            </div>
               
             </div>
          </div>
@@ -145,9 +194,52 @@ $name = $_SESSION['username'];
 
     </div>
   </div>
+       
+       
 
 		   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
 		   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    	  <script>
+
+      $(function() {
+    $('#new').click(function(e) {
+      $('#new_events').delay(100).fadeIn(100);
+    $('#attended').fadeOut(100);
+    $('#attended').removeClass('active');
+    $('#created').fadeOut(100);
+    $('#created').removeClass('active');
+
+    $('#new_events').addClass('active');
+  });
+
+    $('#attend').click(function(e) {
+      $('#attended').delay(100).fadeIn(100);
+    $('#new_events').fadeOut(100);
+    $('#new_events').removeClass('active');
+    $('#created').fadeOut(100);
+    $('#created').removeClass('active');
+
+    $('#attended').addClass('active');
+  });
+
+     $('#create').click(function(e) {
+      $('#created').delay(100).fadeIn(100);
+    $('#new_events').fadeOut(100);
+    $('#new_events').removeClass('active');
+    $('#new_events').fadeOut(100);
+    $('#new_events').removeClass('active');
+
+    $('#created').addClass('active');
+
+  });
+   });
+
+
+
+
+    </script>
+    
+  
 	</body>
 </html>
