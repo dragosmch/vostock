@@ -1,3 +1,19 @@
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'mbax4dc9');
+
+// If connection failed, display the connection error
+if(!$conn)
+{
+  die("Connection failed: " . mysqli_connect_error());
+}
+session_start();
+
+// Take the variables from the session
+$ID = $_SESSION['ID'];
+
+$name = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,14 +70,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="./index.html" style="color:#87CEFA">VoStock</a>
+      <a class="navbar-brand" href="#" style="color:#87CEFA">VoStock</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="./index.html" style="color:#87CEFA">Home</a></li>
-        <li class = "active"><a href="opportunity.html" style="color:#87CEFA">About</a></li>
-        <li><a href="log_register.php" style="color:#87CEFA">I want to volunteer</a></li>
-        <li><a href="opportunity.html" style="color:#87CEFA">I need volunteers</a></li>
+        <li><a href="#" style="color:#87CEFA">Home</a></li>
+        <li class = "active"><a href="#" style="color:#87CEFA">About</a></li>
+        <li><a href="#" style="color:#87CEFA">I want to volunteer</a></li>
+        <li><a href="#" style="color:#87CEFA">I need volunteers</a></li>
       </ul>
     </div>
   </div>
@@ -120,8 +136,10 @@
         <h1>Create an opportunity and wait for volunteers!</h1>
         <?php
     if(isset($_POST['save'])){
-        $sql = "INSERT INTO users (username, password, email)
-        VALUES ('".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."')";
+        $sql = "INSERT INTO events (creator_id, title, location, event_date, time_start, time_end, duration)
+        VALUES ('".$_POST["creator_id"]."','".$_POST["title"]."','".$_POST["location"]."', '".$_POST["date"]."', '".$_POST["time_start"]."', '".$_POST["time_end"]."', '".$_POST["time_end"]."')";
+	
+	$result = msqli_query($conn, $sql);
     }
 
     ?>
@@ -132,7 +150,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="name" id="name"  placeholder="Enter the name of the opportunity"/>
+                  <input type="text" class="form-control" name="title" id="title"  placeholder="Enter the name of the opportunity"/>
                 </div>
               </div>
             </div>
@@ -142,7 +160,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="email" id="email"  placeholder="Enter the location"/>
+                  <input type="text" class="form-control" name="location" id="location"  placeholder="Enter the location"/>
                 </div>
               </div>
             </div>
@@ -152,7 +170,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="username" id="username"  placeholder="Enter the date"/>
+                  <input type="date" class="form-control" name="event_date" id="event_date"  placeholder="Enter the date"/>
                 </div>
               </div>
             </div>
@@ -162,7 +180,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="password" class="form-control" name="password" id="password"  placeholder="Enter the start time"/>
+                  <input type="time" class="form-control" name="time_start" id="time_start"  placeholder="Enter the start time"/>
                 </div>
               </div>
             </div>
@@ -172,7 +190,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Enter the ending time"/>
+                  <input type="time" class="form-control" name="time_end" id="time_end"  placeholder="Enter the ending time"/>
                 </div>
               </div>
             </div>
@@ -180,10 +198,10 @@
             <div class="form-group">
               
               <label for="confirm" class="cols-sm-2 control-label">Description</label>
-              <textarea class="form-control" type="textarea" id="message" placeholder="Add a description" maxlength="140" rows="7"></textarea>            
+              <textarea class="form-control" type="textarea" id="description" placeholder="Add a description" maxlength="140" rows="7"></textarea>            
             </div>
             <div class="form-group ">
-              <a target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block ">Create opportunity</a>
+              <a target="_blank" type="submit" id="button" class="btn btn-primary btn-lg btn-block ">Create opportunity</a>
             </div>
             
           </form>
