@@ -118,14 +118,7 @@
       <div class="row main">
         <div class="main-login main-center">
         <h1>Create an opportunity and wait for volunteers!</h1>
-        <?php
-    if(isset($_POST['save'])){
-        $sql = "INSERT INTO users (username, password, email)
-        VALUES ('".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."')";
-    }
-
-    ?>
-	<form class="" method="post" action="#">
+          <form class="" method="post" action="#">
             
             <div class="form-group">
               <label for="name" class="cols-sm-2 control-label">Name</label>
