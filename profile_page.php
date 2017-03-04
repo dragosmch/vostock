@@ -1,20 +1,16 @@
 <?php
-// Connect to the database
-$conn = mysqli_connect('localhost', 'root', '', 'mbax4dc9');
-
-// If connection failed, display the connection error
-if(!$conn)
-{
-  die("Connection failed: " . mysqli_connect_error());
-}
-session_start();
-
-// Take the variables from the session
-$ID = $_SESSION['ID'];
-
-$name = $_SESSION['username'];
-
-?> 
+ // Connect to the database
+ $conn = mysqli_connect('localhost', 'root', '', 'mbax4dc9');
+ // If connection failed, display the connection error
+ if(!$conn)
+ {
+   die("Connection failed: " . mysqli_connect_error());
+ }
+ session_start();
+ // Take the variables from the session
+ $ID = $_SESSION['ID'];
+ $name = $_SESSION['username'];
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +29,7 @@ $name = $_SESSION['username'];
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
    <link rel="stylesheet" href="assets/bootstrap/css/user_page.css"></script>
 
-   
+
     <script type="text/javascript" src="http://www.clubdesign.at/floatlabels.js"></script>
 
   </head>
@@ -59,15 +55,19 @@ $name = $_SESSION['username'];
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-file-text-o"></i> Share your events 
+                    <i class="fa fa-file-text-o"></i> Share your events
                 </a>
             </li>
+<<<<<<< HEAD
             <li>
                 <a href="#" id = "create">
                     <i class="fa fa-certificate"></i>Events you created 
                 </a>
             </li>
            
+=======
+
+>>>>>>> d836abf2e2ac350875c7b55224e30283d18d5780
         </ul><!-- /.nav -->
 
         <h5 class="nav-email-subtitle">Your projects</h5>
@@ -77,11 +77,11 @@ $name = $_SESSION['username'];
                     <i class="fa fa-folder-open"></i> Profile options
                 </a>
             </li>
-            
+
         </ul><!-- /.nav -->
     </div>
     <div class="col-sm-9">
-        
+
         <!-- resumt -->
         <div class="panel panel-default">
                <div class="panel-heading resume-heading">
@@ -91,7 +91,7 @@ $name = $_SESSION['username'];
                            <figure>
                               <img class="img-circle img-responsive" style="width:50%, height:50%" alt="" src="assets/images/profile.jpg">
                            </figure>
-                          
+
                         </div>
                         <div class="col-xs-12 col-sm-8">
                            <ul class="list-group">
@@ -148,8 +148,6 @@ $name = $_SESSION['username'];
                   <h5>Location : Stockport </h5>
                   <h5>Date : 3rd March 12 - 22 </h5>
                   <p>
-                     Help us save the orphans and challange yourself by running 20 miles in the Atlantic Ocean. This is a charitable event and all
-                     participants will be monitored and safe
                   </p>
                 <button class="btn btn-succesful">You attended this event </button>
                </div>
@@ -188,6 +186,43 @@ $name = $_SESSION['username'];
                </div>
             </div>
               
+                  <h4>Prior Experiences</h4>
+                  <ul class="list-group">
+                     <a class="list-group-item inactive-link" href="#">
+                        <h4 class="list-group-item-heading">
+                           Software Engineer at Twitter
+                        </h4>
+                        <p class="list-group-item-text">
+                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
+                           te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                        </p>
+                     </a>
+                     <a class="list-group-item inactive-link" href="#">
+                        <h4 class="list-group-item-heading">Software Engineer at LinkedIn</h4>
+                        <p class="list-group-item-text">
+                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
+                           Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
+                           nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                        </p>
+                        <ul>
+                           <li>
+                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
+                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
+                              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                           </li>
+                           <li>
+                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
+                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
+                              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                           </li>
+                        </ul>
+                        <p></p>
+                     </a>
+                  </ul>
+               </div>
+
+
+
             </div>
          </div>
         <!-- resume -->

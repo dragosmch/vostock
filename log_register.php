@@ -15,7 +15,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
    <link rel="stylesheet" href="assets/bootstrap/css/special.css"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/main.css"></script>
-   
+
     <script type="text/javascript" src="http://www.clubdesign.at/floatlabels.js"></script>
 
   </head>
@@ -86,7 +86,7 @@
       </div>
     </div>
   </div>
-  
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -95,27 +95,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
      <script>
-
       $(function() {
-
     $('#login-form-link').click(function(e) {
       $("#login-form").delay(100).fadeIn(100);
     $("#register-form").fadeOut(100);
     $('#register-form-link').removeClass('active');
     $(this).addClass('active');
-    
+
   });
   $('#register-form-link').click(function(e) {
     $("#register-form").delay(100).fadeIn(100);
     $("#login-form").fadeOut(100);
     $('#login-form-link').removeClass('active');
     $(this).addClass('active');
-   
+
   });
-
 });
-
   </script>
-  
+
   </body>
 </html>
