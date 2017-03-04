@@ -27,7 +27,7 @@ $name = $_SESSION['username'];
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>sign up or login for VoStock</title>
+    <title><?php echo $name ?>'s page</title>
 
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -46,12 +46,12 @@ $name = $_SESSION['username'];
     <div class="col-sm-3">
         <a href="mail-compose.html" class="btn btn-danger btn-block btn-compose-email">Create event</a>
         <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
-            <li >
+            <li class="active" >
                 <a href="#mail-inbox.html">
                     <i class="fa fa-inbox"></i>New events in Stockport
                 </a>
             </li>
-            <li class = "active">
+            <li>
                 <a href="#mail-compose.html"><i class="fa fa-envelope-o"></i>Events you attended</a>
             </li>
             <li>
@@ -60,6 +60,11 @@ $name = $_SESSION['username'];
             <li>
                 <a href="#">
                     <i class="fa fa-file-text-o"></i> Share your events 
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-certificate"></i>Events you created 
                 </a>
             </li>
            
@@ -99,62 +104,40 @@ $name = $_SESSION['username'];
                      </div>
                   </div>
                </div>
+               <?php
+               $sql = "SELECT id, title, location, event_date, time_start, time_end, description FROM events";  
+               $result = mysqli_query($conn, $sql);
+         
+               if(mysqli_num_rows($result) == 0)
+               {
+
+               ?>
                <div class="bs-callout bs-callout-danger">
-                  <h4>Summary</h4>
-                  <p>
-                     Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
-                     te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                  </p>
-                  <p>
-                     Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis. 
-                     Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
-                  </p>
+                  <h4><?php echo "No events found"?></h4>
                </div>
-               <div class="bs-callout bs-callout-danger">
-                  <h4>Research Interests</h4>
+               <?php
+                } 
+                else 
+                {
+                  while($row = mysqli_fetch_assoc($result))
+                  {
+
+                  ?>
+                <div class="bs-callout bs-callout-danger">
+                  <h4><?php echo $row['title'] ?></h4>
+                  <h5><?php echo $row['location'] ?> </h5>
+                  <h5><?php echo $row['event_date'].'&nbsp'.$row['time_start'].' - '.$row['time_end']; ?> </h5>
                   <p>
-                     Software Engineering, Machine Learning, Image Processing,
-                     Computer Vision, Artificial Neural Networks, Data Science,
-                     Evolutionary Algorithms.
+                     <?php echo $row['description'];?>
                   </p>
+                  <button type="button" onClick="includes/attend_event.php" class="btn btn-warning">Attend this event</button>
                </div>
-               <div class="bs-callout bs-callout-danger">
-                  <h4>Prior Experiences</h4>
-                  <ul class="list-group">
-                     <a class="list-group-item inactive-link" href="#">
-                        <h4 class="list-group-item-heading">
-                           Software Engineer at Twitter
-                        </h4>
-                        <p class="list-group-item-text">
-                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
-                           te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                        </p>
-                     </a>
-                     <a class="list-group-item inactive-link" href="#">
-                        <h4 class="list-group-item-heading">Software Engineer at LinkedIn</h4>
-                        <p class="list-group-item-text">
-                           Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                           Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                           nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                        </p>
-                        <ul>
-                           <li>
-                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                           </li>
-                           <li>
-                              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                           </li>
-                        </ul>
-                        <p></p>
-                     </a>
-                  </ul>
-               </div>
+               <?php
+                 }
+               }
+               mysqli_close($conn);
+               ?>
                
-              
               
             </div>
          </div>
